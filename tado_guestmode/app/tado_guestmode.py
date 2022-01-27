@@ -169,7 +169,7 @@ class TadoAPI():
     def getGuestTracking(self):
         if self.guest_device > 0:
             trackingurl = '{0}/v2/homes/{1}/mobileDevices/{2}/settings'.format(self.apiurl, self.home_id, self.guest_device)
-            status = requests.get(trackingurl, headers=self.params, timeout=10).json()['geoTrackingEnabled']
+            status = requests.get(trackingurl, headers=self.params, timeout=100).json()['geoTrackingEnabled']
             return True, "Status checked.", status
         else:
             return False, "No guest device to check.", False
